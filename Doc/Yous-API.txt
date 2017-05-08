@@ -1,0 +1,45 @@
+/****************************************************************************/
+Yous-API请求Head头设置
+URL:http://localhost:8001/api/GetServiceApiResult
+
+Content-Type: application/json
+Host: localhost:8001
+Content-Length: 64
+
+/****************************************************************************/
+
+模块-用户中心（10-开头）
+-----------------------------------------------------------------------------
+API名称 ：     获取用户列表--待确认
+APICode ：     10000001
+RequestJson： {"parameters":[],"foreEndType":2,"code":"10000001"}
+ResponseJson  {"success":true,"message":"ok","data":[],"code":null}
+
+-----------------------------------------------------------------------------
+API名称 ：     获取手机短信码
+APICode ：     10000002
+RequestJson： {"parameters":{"CultureName":"","Mobile":"1345678901","VerifiationCCodeType":"1","ImageNo":"","InputCode":""},"foreEndType":2,"code":"10000002"}
+ResponseJson  {"success":true,"message":"ok","data":[],"code":null}
+
+Mobile:手机号
+VerifiationCCodeType:1-注册；2-修改密码；3-忘记密码；4-绑定手机号；5-动态登陆；6-查询订单
+InputCode:用户输入验证码
+-----------------------------------------------------------------------------
+API名称 ：     校验手机验证码
+APICode ：     10000003
+RequestJson： {"parameters":{"CultureName":"","Mobile":"1345678901","VerifiationCCodeType":"1","ImageNo":"","InputCode":"1234"},"foreEndType":2,"code":"10000003"}
+ResponseJson  {"success":true,"message":"验证通过","data":[],"code":null}
+							{"success":false,"message":"验证失败.","data":"7371","code":null}
+
+Mobile:手机号
+VerifiationCCodeType:1-注册；2-修改密码；3-忘记密码；4-绑定手机号；5-动态登陆；6-查询订单
+InputCode:用户输入验证码
+
+返回类型：
+success:true/false
+message:详细信息（验证码超时、验证通过、验证失败、未发现手机验证码）
+-----------------------------------------------------------------------------
+API名称 ：     用户注册--待确认需求
+APICode ：     1000004
+RequestJson： {"parameters":{"name":"kaka","phone":"1345678901","pwd":"kaka123","age":"23","sex":"男","email":"kaka@163.com"},"foreEndType":2,"code":"10000004"}
+ResponseJson  {"success":true,"message":"ok","data":[],"code":null}
