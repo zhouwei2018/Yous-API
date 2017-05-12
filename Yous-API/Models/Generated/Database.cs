@@ -106,6 +106,58 @@ namespace Yous
 	
 
     
+	[TableName("youshi.tb_base_area")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class tb_base_area : MySqlDbHelperDB.Record<tb_base_area>  
+    {
+		[Column] public int Id { get; set; }
+		[Column] public int? province_id { get; set; }
+		[Column] public string name { get; set; }
+		[Column] public string remark { get; set; }
+	}
+    
+	[TableName("youshi.tb_base_service_type")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class tb_base_service_type : MySqlDbHelperDB.Record<tb_base_service_type>  
+    {
+		[Column] public int Id { get; set; }
+		[Column] public string name { get; set; }
+	}
+    
+	[TableName("youshi.tb_office")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class tb_office : MySqlDbHelperDB.Record<tb_office>  
+    {
+		[Column] public int Id { get; set; }
+		[Column] public int? area_id { get; set; }
+		[Column] public string address { get; set; }
+		[Column] public string description { get; set; }
+	}
+    
+	[TableName("youshi.tb_serverice")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class tb_serverice : MySqlDbHelperDB.Record<tb_serverice>  
+    {
+		[Column] public int Id { get; set; }
+		[Column] public string name { get; set; }
+		[Column] public string lable { get; set; }
+		[Column] public int? tpye { get; set; }
+	}
+    
+	[TableName("youshi.tb_user")]
+	[PrimaryKey("Id")]
+	[ExplicitColumns]
+    public partial class tb_user : MySqlDbHelperDB.Record<tb_user>  
+    {
+		[Column] public int Id { get; set; }
+		[Column] public string username { get; set; }
+		[Column] public string password { get; set; }
+	}
+    
 	[TableName("youshi.tbhotarea")]
 	[PrimaryKey("fdid")]
 	[ExplicitColumns]

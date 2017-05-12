@@ -73,6 +73,29 @@ namespace Yous_API.Controllers
             return responseJson;
         }
 
+
+        /// <summary>
+        ///  获取Area信息
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        [Route("api/20000001")]
+        [HttpPost]
+        public ResponseJson GetArea(RequestJson parameters)
+        {
+            JObject o = JObject.Parse(parameters.Parameters.ToLower());
+            //step1 TODO-check param参数，参数不对，直接抛出业务异常
+            var area_id = o["area_id"].ToString();
+
+            //step2 TODO-业务组装sql语句
+            MySqlDbHelperDB dbhelper = new MySqlDbHelperDB();
+            var result = dbhelper.Fetch<tb_base_area>("select * from tb_base_area where Id=@0", area_id);
+
+            //step3 返回结果
+            ResponseJson responseJson = new ResponseJson { success = true, data = result, message = "" };
+            return responseJson;
+        }
+
         #region 入参对象
         /// <summary>
         /// 

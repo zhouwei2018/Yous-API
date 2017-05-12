@@ -8,7 +8,7 @@ using Top.Api.Response;
 
 namespace Yous_API.Util
 {
-    public class Utility
+    public class SmsHelp
     {
         /// <summary>
         /// 发送短信
