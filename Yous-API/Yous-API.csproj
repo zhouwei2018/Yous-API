@@ -179,9 +179,9 @@
     <Compile Include="Models\PetaPoco.cs" />
     <Compile Include="Models\RequestJson.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Util\RedisHelper.cs" />
-    <Compile Include="Util\SmsHelp.cs" />
-    <Compile Include="Util\WebApiExceptionFilterAttribute.cs" />
+    <Compile Include="Utility\RedisHelper.cs" />
+    <Compile Include="Utility\SmsHelp.cs" />
+    <Compile Include="Utility\WebApiExceptionFilterAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
