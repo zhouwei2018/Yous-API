@@ -15,17 +15,23 @@ namespace Yous_API.Controllers
 {
     public class APIController : ApiController
     {
-
+       
         [Route("api/GetServiceApiResult")]
         [HttpPost]
         public IHttpActionResult GetServiceApiResult(dynamic inputParame)
         {
+            Dictionary<string, string> controllerNameKeyValue = new Dictionary<string, string> {   
+                {"100", "http://" + Url.Request.Headers.Host + "/UserCenter"}, //100-用户中心路由
+                {"200", "http://" + Url.Request.Headers.Host + "Portals"},     //200-网站门户路由
+            };
+       
             string ret = String.Empty;
             RequestJson parame = GetInParametersCondition(inputParame);
 
             #region 发送Request请求
             DateTime reqeustdt = DateTime.Now;
-            HttpWebRequest proxyRequest = HttpWebRequest.Create("http://" + Url.Request.Headers.Host + "/api/" + parame.Code) as HttpWebRequest;
+            var controllerName = controllerNameKeyValue[parame.Code.Substring(0, 3)];
+            HttpWebRequest proxyRequest = HttpWebRequest.Create(controllerName + "/" + parame.Code) as HttpWebRequest;
             proxyRequest.Method = "POST";
             proxyRequest.KeepAlive = false;
             proxyRequest.ContentType = "application/json";
@@ -56,45 +62,6 @@ namespace Yous_API.Controllers
             return new TextResult(ret, Request);
         }
 
-        [Route("api/10000001")]
-        [HttpPost]
-        public ResponseJson GetUser(RequestJson parameters)
-        {
-            JObject o = JObject.Parse(parameters.Parameters);
-            //step1 TODO-check param参数，参数不对，直接抛出业务异常
-            var groupId = o["groupId"];
-
-            //step2 TODO-业务组装sql语句
-            MySqlDbHelperDB dbhelper = new MySqlDbHelperDB();
-            var result = dbhelper.Fetch<tbhotarea>("select * from tbhotarea");
-
-            //step3 返回结果
-            ResponseJson responseJson = new ResponseJson { success=true, data=result, message=""};
-            return responseJson;
-        }
-
-
-        /// <summary>
-        ///  获取Area信息
-        /// </summary>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        [Route("api/20000001")]
-        [HttpPost]
-        public ResponseJson GetArea(RequestJson parameters)
-        {
-            JObject o = JObject.Parse(parameters.Parameters.ToLower());
-            //step1 TODO-check param参数，参数不对，直接抛出业务异常
-            var area_id = o["area_id"].ToString();
-
-            //step2 TODO-业务组装sql语句
-            MySqlDbHelperDB dbhelper = new MySqlDbHelperDB();
-            var result = dbhelper.Fetch<tb_base_area>("select * from tb_base_area where Id=@0", area_id);
-
-            //step3 返回结果
-            ResponseJson responseJson = new ResponseJson { success = true, data = result, message = "" };
-            return responseJson;
-        }
 
         #region 入参对象
         /// <summary>
@@ -112,7 +79,7 @@ namespace Yous_API.Controllers
                 InputParameters.Code = InputParameters.code;
             return new RequestJson
             {
-                Parameters = InputParameters.Parameters == null ? string.Empty : InputParameters.Parameters.ToString(), //Action对应的传入参数
+                Parameters = InputParameters.Parameters == null ? string.Empty : InputParameters.Parameters.ToString().ToLower(), //Action对应的传入参数
                 ForeEndType = (int)InputParameters.ForeEndType,     //前端类型 1：IOS、2：Android、3：H5
                 Method = "POST",                                    //默认只支持POST提交
                 Code = InputParameters.Code                         //前台传的编码
