@@ -13,7 +13,7 @@ using Yous_Api.Models;
 namespace Yous_API.Controllers
 {
     /// <summary>
-    /// 门户首页路由
+    /// 门户首页路由(200-)
     /// </summary>
     public class PortalsController : ApiController
     {
