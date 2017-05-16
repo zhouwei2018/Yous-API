@@ -22,7 +22,7 @@ namespace Yous_API.Controllers
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        [Route("Portals/10000001")]
+        [Route("Portals/1=20000001")]
         [HttpPost]
         public ResponseJson GetArea(RequestJson parameters)
         {

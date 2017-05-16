@@ -21,7 +21,7 @@ namespace Yous_API.Controllers
         public IHttpActionResult GetServiceApiResult(dynamic inputParame)
         {
             Dictionary<string, string> controllerNameKeyValue = new Dictionary<string, string> {   
-                {"100", "http://" + Url.Request.Headers.Host + "/UserCenter"}, //100-用户中心路由
+                {"100", "http://" + Url.Request.Headers.Host + "/UserCenter"},  //100-用户中心路由
                 {"200", "http://" + Url.Request.Headers.Host + "/Portals"},     //200-网站门户路由
             };
        
