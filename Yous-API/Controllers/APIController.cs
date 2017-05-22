@@ -23,6 +23,7 @@ namespace Yous_API.Controllers
             Dictionary<string, string> controllerNameKeyValue = new Dictionary<string, string> {   
                 {"100", "http://" + Url.Request.Headers.Host + "/UserCenter"},  //100-用户中心路由
                 {"200", "http://" + Url.Request.Headers.Host + "/Portals"},     //200-网站门户路由
+                {"900", "http://" + Url.Request.Headers.Host + "/PublicServer"},     //200-网站门户路由
             };
        
             string ret = String.Empty;
@@ -79,7 +80,10 @@ namespace Yous_API.Controllers
                 InputParameters.Code = InputParameters.code;
             return new RequestJson
             {
-                Parameters = InputParameters.Parameters == null ? string.Empty : InputParameters.Parameters.ToString().ToLower(), //Action对应的传入参数
+                //Parameters = InputParameters.Parameters == null ? string.Empty : InputParameters.Parameters.ToString().ToLower(), //Action对应的传入参数
+
+                Parameters = InputParameters.Parameters == null ? string.Empty : InputParameters.Parameters.ToString(), //Action对应的传入参数
+
                 ForeEndType = (int)InputParameters.ForeEndType,     //前端类型 1：IOS、2：Android、3：H5
                 Method = "POST",                                    //默认只支持POST提交
                 Code = InputParameters.Code                         //前台传的编码
