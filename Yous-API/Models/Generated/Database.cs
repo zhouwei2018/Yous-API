@@ -16,7 +16,7 @@ using System.Linq;
 using System.Web;
 using PetaPoco;
 
-namespace Yous
+namespace YousAPI.Models
 {
 	public partial class MySqlDbHelperDB : Database
 	{

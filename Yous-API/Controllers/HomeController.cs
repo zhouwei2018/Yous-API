@@ -4,8 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Yous_API.Controllers
+namespace YousAPI.Controllers
 {
+    /// <summary>
+    /// API文档
+    /// </summary>
     public class HomeController : Controller
     {
         public ActionResult Index()

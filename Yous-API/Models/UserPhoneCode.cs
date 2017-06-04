@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Yous_API.Models
+namespace YousAPI.Models
 {
     public class UserPhoneCode
     {

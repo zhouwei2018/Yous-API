@@ -8,7 +8,7 @@ using System.Web.Http;
 using System.Threading.Tasks;
 using System.Threading;
 
-namespace Yous_API
+namespace YousAPI
 {
     public class TextResult : IHttpActionResult
     {

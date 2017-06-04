@@ -8,11 +8,14 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Routing;
-using Yous;
-using Yous_Api.Models;
+using YousAPI;
+using YousAPI.Models;
 
-namespace Yous_API.Controllers
+namespace YousAPI.Controllers
 {
+    /// <summary>
+    /// 路由分发器
+    /// </summary>
     public class APIController : ApiController
     {
        

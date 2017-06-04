@@ -10,12 +10,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Yous_Api.Models;
+using YousAPI.Models;
 
-namespace Yous_API.Controllers
+
+namespace YousAPI.Controllers
 {
     /// <summary>
-    /// 公用服务类
+    /// 公用服务类（900-）
     /// </summary>
     public class PublicServerController : ApiController
     {

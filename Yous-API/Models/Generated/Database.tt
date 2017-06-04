@@ -2,7 +2,7 @@
 <#
 	// Settings
     ConnectionStringName = "MySqlDbHelper";			// Uses last connection string in config if not specified
-    Namespace = "Yous";
+    Namespace = "YousAPI.Models";
     RepoName = "";
     GenerateOperations = true;
 	GeneratePocos = true;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace Yous_Api.Models
+namespace YousAPI.Models
 {
     public class RequestJson
     {

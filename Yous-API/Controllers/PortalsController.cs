@@ -8,9 +8,9 @@ using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Routing;
-using Yous;
-using Yous_Api.Models;
-namespace Yous_API.Controllers
+using YousAPI.Models;
+
+namespace YousAPI.Controllers
 {
     /// <summary>
     /// 门户首页路由(200-)
