@@ -29,7 +29,8 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>1</WarningLevel>
+    <DocumentationFile>bin\Yous-API.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,11 +43,11 @@
   <ItemGroup>
     <Reference Include="aliyun-net-sdk-core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\aliyun-net-sdk-core.dll</HintPath>
+      <HintPath>..\Lib\aliyun-net-sdk-sms\aliyun-net-sdk-core.dll</HintPath>
     </Reference>
     <Reference Include="aliyun-net-sdk-sms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\aliyun-net-sdk-sms.dll</HintPath>
+      <HintPath>..\Lib\aliyun-net-sdk-sms\aliyun-net-sdk-sms.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.JScript" />

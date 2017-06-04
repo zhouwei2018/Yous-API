@@ -14,6 +14,9 @@ using Yous_Api.Models;
 
 namespace Yous_API.Controllers
 {
+    /// <summary>
+    /// 公用服务类
+    /// </summary>
     public class PublicServerController : ApiController
     {
         /// <summary>

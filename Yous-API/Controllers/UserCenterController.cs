@@ -19,9 +19,9 @@ namespace Yous_API.Controllers
     {
 
         /// <summary>
-        ///  获取Area信息
+        ///  获取用户信息
         /// </summary>
-        /// <param name="parameters"></param>
+        /// <param name="userId">用户ID</param>
         /// <returns></returns>
         [Route("UserCenter/10000001")]
         [HttpPost]
