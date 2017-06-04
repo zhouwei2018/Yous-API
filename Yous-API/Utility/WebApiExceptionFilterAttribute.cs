@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web;
 using System.Web.Http.Filters;
 
-namespace Yous_API.Utility
+namespace YousAPI.Utility
 {
     public class WebApiExceptionFilterAttribute : ExceptionFilterAttribute
     {

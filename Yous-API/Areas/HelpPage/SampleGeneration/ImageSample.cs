@@ -1,6 +1,6 @@
 using System;
 
-namespace Yous_API.Areas.HelpPage
+namespace YousAPI.Areas.HelpPage
 {
     /// <summary>
     /// This represents an image sample on the help page. There's a display template named ImageSample associated with this class.

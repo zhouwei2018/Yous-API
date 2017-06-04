@@ -10,7 +10,7 @@ using Top.Api;
 using Top.Api.Request;
 using Top.Api.Response;
 
-namespace Yous_API.Utility
+namespace YousAPI.Utility
 {
     public class SmsHelper
     {

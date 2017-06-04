@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 
-namespace Yous_API.Utility
+namespace YousAPI.Utility
 {
     public class RedisHelper
     {
