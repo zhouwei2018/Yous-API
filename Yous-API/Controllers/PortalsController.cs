@@ -18,13 +18,13 @@ namespace YousAPI.Controllers
     public class PortalsController : ApiController
     {
         /// <summary>
-        ///  获取Area信息
+        ///  获取网站首页信息
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
         [Route("Portals/20000001")]
         [HttpPost]
-        public ResponseJson GetArea(RequestJson parameters)
+        public ResponseJson GetHomePageArea(RequestJson parameters)
         {
             JObject o = JObject.Parse(parameters.Parameters.ToLower());
             //step1 TODO-check param参数，参数不对，直接抛出业务异常
@@ -32,7 +32,7 @@ namespace YousAPI.Controllers
 
             //step2 TODO-业务组装sql语句
             MySqlDbHelperDB dbhelper = new MySqlDbHelperDB();
-            var result = dbhelper.Fetch<tb_base_area>("select * from tb_base_area where Id=@0", area_id);
+            var result = dbhelper.Fetch<tb_user>("select * from tb_user where C_Id=@0", area_id);
 
             //step3 返回结果
             ResponseJson responseJson = new ResponseJson { success = true, data = result, message = "" };

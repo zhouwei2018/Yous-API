@@ -7,7 +7,7 @@ namespace YousAPI.Models
 {
     public class UserPhoneCode
     {
-        public string id { get; set; }
+        public string Id { get; set; }
         public string phone { get; set; }
         public string code { get; set; }
         /// <summary>

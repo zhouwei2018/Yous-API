@@ -198,9 +198,12 @@
     <Compile Include="Models\ResponseJson.cs" />
     <Compile Include="Models\PetaPoco.cs" />
     <Compile Include="Models\RequestJson.cs" />
+    <Compile Include="Models\UserPhoneCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utility\RedisConfigInfo.cs" />
     <Compile Include="Utility\RedisHelper.cs" />
     <Compile Include="Utility\SmsHelp.cs" />
+    <Compile Include="Utility\Utility.cs" />
     <Compile Include="Utility\WebApiExceptionFilterAttribute.cs" />
   </ItemGroup>
   <ItemGroup>

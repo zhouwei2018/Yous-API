@@ -3,6 +3,7 @@ using Senparc.Weixin.CommonAPIs;
 using Senparc.Weixin.Entities;
 using Senparc.Weixin.MP.Containers;
 using Senparc.Weixin.MP.Entities;
+using ServiceStack.Redis.Generic;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -11,6 +12,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using YousAPI.Models;
+using YousAPI.Utility;
 
 
 namespace YousAPI.Controllers
@@ -21,7 +23,7 @@ namespace YousAPI.Controllers
     public class PublicServerController : ApiController
     {
         /// <summary>
-        ///  获取Area信息
+        ///  微信发送方法
         /// </summary>
         /// <param name="parameters"></param>
         /// <returns></returns>
@@ -61,6 +63,61 @@ namespace YousAPI.Controllers
             return responseJson;
         }
 
+
+        /// <summary>
+        ///  获取短信码
+        /// </summary>
+        /// <param name="userId">用户ID</param>
+        /// <returns></returns>
+        [Route("UserCenter/90000002")]
+        [HttpPost]
+        public ResponseJson GetMobileCode(dynamic obj)
+        {
+
+            string Mobile = obj.parameters.Mobile;
+            string VerifiationCCodeType = obj.parameters.VerifiationCCodeType;
+            string ImageNo = obj.parameters.ImageNo;
+            string InputCode = obj.parameters.InputCode;
+
+
+            ResponseJson result = new ResponseJson { success = true, message = "" };
+            Random rm = new Random();
+            string s = string.Empty;                //置空字符串.
+            string code = Utility.Utility.random_1(s, rm);
+            result.data = code;
+
+            try
+            {
+                using (var redisClient = RedisHelper.GetClient())
+                {
+                    IRedisTypedClient<UserPhoneCode> irClient = redisClient.As<UserPhoneCode>();
+
+                    //判断对象是否存在
+                    //删除同一类型的用户短信请求
+                    UserPhoneCode data = irClient.GetById(Mobile + "_" + VerifiationCCodeType);
+                    if (data != null)
+                    {
+                        irClient.DeleteById(data.Id);
+                    }
+       
+                    UserPhoneCode pcode = new UserPhoneCode()
+                    {
+                        Id = Mobile + "_" + VerifiationCCodeType,
+                        phone = Mobile,
+                        VerifiationCCodeType = VerifiationCCodeType,
+                        code = code,
+                        passtimespan = 3600,
+                        getcodedate = DateTime.Now
+                    };
+                    irClient.Store(pcode);
+
+                    //发送短信
+                    SmsHelp.SendMassage(pcode.phone, pcode.code);
+                }
+            }
+            catch (Exception ex) { }
+            return result;
+        }
 
         #region weixin
         /// <summary>

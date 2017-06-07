@@ -6,7 +6,7 @@
 // 
 //     Connection String Name: `MySqlDbHelper`
 //     Provider:               `MySql.Data.MySqlClient`
-//     Connection String:      `Server=localhost;Database=youshi;Uid=root;Pwd=root;charset=utf8;pooling=true;`
+//     Connection String:      `Server=116.62.71.76;Database=youshi;Uid=root;Pwd=youshi2015;charset=utf8;pooling=true;`
 //     Schema:                 ``
 //     Include Views:          `False`
 
@@ -106,71 +106,170 @@ namespace YousAPI.Models
 	
 
     
-	[TableName("youshi.tb_base_area")]
+	[TableName("youshi.新表")]
 	[PrimaryKey("Id")]
 	[ExplicitColumns]
-    public partial class tb_base_area : MySqlDbHelperDB.Record<tb_base_area>  
+    public partial class 新表 : MySqlDbHelperDB.Record<新表>  
     {
 		[Column] public int Id { get; set; }
-		[Column] public int? province_id { get; set; }
-		[Column] public string name { get; set; }
-		[Column] public string remark { get; set; }
 	}
     
-	[TableName("youshi.tb_base_service_type")]
-	[PrimaryKey("Id")]
+	[TableName("youshi.tb_building")]
+	[PrimaryKey("TB_BuildingInfo_ID", AutoIncrement=false)]
 	[ExplicitColumns]
-    public partial class tb_base_service_type : MySqlDbHelperDB.Record<tb_base_service_type>  
+    public partial class tb_building : MySqlDbHelperDB.Record<tb_building>  
     {
-		[Column] public int Id { get; set; }
-		[Column] public string name { get; set; }
+		[Column] public int TB_BuildingInfo_ID { get; set; }
+		[Column] public string Col_Name { get; set; }
+		[Column] public string Col_KFSInfo { get; set; }
+		[Column] public string Col_Address { get; set; }
+		[Column] public decimal? Col_BuildAreage { get; set; }
+		[Column] public decimal? Col_KFSAreage { get; set; }
+		[Column] public decimal? Col_YZAreage { get; set; }
+		[Column] public decimal? Col_SYAreage { get; set; }
+		[Column] public int? Col_AllNum { get; set; }
+		[Column] public int? Col_KFSNum { get; set; }
+		[Column] public int? Col_YZNum { get; set; }
+		[Column] public int? Col_SYNum { get; set; }
+		[Column] public DateTime? Col_KPDate { get; set; }
+		[Column] public string Col_Test { get; set; }
 	}
     
-	[TableName("youshi.tb_office")]
-	[PrimaryKey("Id")]
+	[TableName("youshi.tb_buildingdetail")]
+	[PrimaryKey("TB_BuildingDetail_ID", AutoIncrement=false)]
 	[ExplicitColumns]
-    public partial class tb_office : MySqlDbHelperDB.Record<tb_office>  
+    public partial class tb_buildingdetail : MySqlDbHelperDB.Record<tb_buildingdetail>  
     {
-		[Column] public int Id { get; set; }
-		[Column] public string name { get; set; }
-		[Column] public int? area_id { get; set; }
-		[Column] public string address { get; set; }
-		[Column] public string description { get; set; }
+		[Column] public int TB_BuildingDetail_ID { get; set; }
+		[Column] public int? TB_Building_ID { get; set; }
+		[Column] public string Col_No { get; set; }
+		[Column] public string Col_Key1 { get; set; }
+		[Column] public string Col_Key2 { get; set; }
+		[Column] public string Col_Key3 { get; set; }
+		[Column] public string Col_Key4 { get; set; }
+		[Column] public string Col_Key5 { get; set; }
+		[Column] public int? Col_FloorNum { get; set; }
+		[Column] public int? Col_FloorNum_SJ { get; set; }
+		[Column] public decimal? Col_FloorHeight { get; set; }
+		[Column] public string Col_Property { get; set; }
+		[Column] public decimal? Col_FloorHeight_J { get; set; }
+		[Column] public string Col_Elevator_PP { get; set; }
+		[Column] public int? Col_Elevator_KT_Num { get; set; }
+		[Column] public int? Col_Elevator_HT_Num { get; set; }
+		[Column] public string Col_Elevator_Floor_QF { get; set; }
+		[Column] public decimal? Col_Elevator_KT_L { get; set; }
+		[Column] public decimal? Col_Elevator_KT_W { get; set; }
+		[Column] public decimal? Col_Elevator_KT_H { get; set; }
+		[Column] public decimal? Col_Elevator_HT_L { get; set; }
+		[Column] public decimal? Col_Elevator_HT_W { get; set; }
+		[Column] public decimal? Col_Elevator_HT_H { get; set; }
+		[Column] public decimal? Col_BuildAreage { get; set; }
+		[Column] public decimal? Col_KFSAreage { get; set; }
+		[Column] public decimal? Col_YZAreage { get; set; }
+		[Column] public decimal? Col_FloorAreage { get; set; }
+		[Column] public decimal? Col_KZAreage { get; set; }
+		[Column] public byte[] Col_BDImage { get; set; }
+		[Column] public int? Col_AllNum { get; set; }
+		[Column] public int? Col_KZNum { get; set; }
+		[Column] public int? Col_SYNum { get; set; }
+		[Column] public decimal? Col_KZ_ZB { get; set; }
+		[Column] public decimal? Col_SC_Price { get; set; }
+		[Column] public decimal? Col_LS_Price { get; set; }
+		[Column] public decimal? Col_SC_M_Price { get; set; }
+		[Column] public decimal? Col_LS_M_Price { get; set; }
+		[Column] public decimal? Col_SC_Money { get; set; }
+		[Column] public sbyte? Col_IsZPDept { get; set; }
+		[Column] public string Col_ZP_HZFS { get; set; }
+		[Column] public decimal? Col_ZP_FY { get; set; }
+		[Column] public string Col_ZP_FYTime { get; set; }
+		[Column] public string Col_ZP_Address { get; set; }
+		[Column] public string Col_ZP_Phone { get; set; }
+		[Column] public sbyte? Col_IsDelete { get; set; }
+		[Column] public string Col_State { get; set; }
+		[Column] public int? TB_Person_ID_Create { get; set; }
+		[Column] public DateTime? Col_CreateDate { get; set; }
+		[Column] public int? TB_Person_ID_Update { get; set; }
+		[Column] public DateTime? Col_UpdateDate { get; set; }
 	}
     
-	[TableName("youshi.tb_serverice")]
-	[PrimaryKey("Id")]
+	[TableName("youshi.tb_buildingdetail_house")]
+	[PrimaryKey("TB_BuildingDetail_House_ID", AutoIncrement=false)]
 	[ExplicitColumns]
-    public partial class tb_serverice : MySqlDbHelperDB.Record<tb_serverice>  
+    public partial class tb_buildingdetail_house : MySqlDbHelperDB.Record<tb_buildingdetail_house>  
     {
-		[Column] public int Id { get; set; }
-		[Column] public string name { get; set; }
-		[Column] public string lable { get; set; }
-		[Column] public int? tpye { get; set; }
+		[Column] public int TB_BuildingDetail_House_ID { get; set; }
+		[Column] public int? TB_Building_ID { get; set; }
+		[Column] public int? TB_BuildingDetail_ID { get; set; }
+		[Column] public string Col_NO { get; set; }
+		[Column] public string Col_MaxFloor { get; set; }
+		[Column] public string Col_LowFloor { get; set; }
+		[Column] public string Col_HouseNo { get; set; }
+		[Column] public decimal? Col_HouseAreage { get; set; }
+		[Column] public string Col_HouseJG { get; set; }
+		[Column] public decimal? Col_HouseFloorHeight { get; set; }
+		[Column] public decimal? Col_HouseWidth { get; set; }
+		[Column] public decimal? Col_HouseLength { get; set; }
+		[Column] public byte[] Col_HouseImageModel { get; set; }
+		[Column] public byte[] Col_HouseImage { get; set; }
+		[Column] public string Col_HouseDirection { get; set; }
+		[Column] public string Col_JYModel { get; set; }
+		[Column] public sbyte? Col_IsThis { get; set; }
+		[Column] public sbyte? Col_Is_ZH { get; set; }
+		[Column] public decimal? Col_KZ_Days { get; set; }
+		[Column] public string Col_ZPPirv { get; set; }
+		[Column] public string Col_House_YS { get; set; }
+		[Column] public string Col_House_LS { get; set; }
+		[Column] public sbyte? Col_IsDelete { get; set; }
+		[Column] public string Col_State { get; set; }
+		[Column] public int? TB_Person_ID_Create { get; set; }
+		[Column] public DateTime? Col_CreateDate { get; set; }
+		[Column] public int? TB_Person_ID_Update { get; set; }
+		[Column] public DateTime? Col_UpdateDate { get; set; }
+	}
+    
+	[TableName("youshi.tb_buildingdetail_house_dl")]
+	[PrimaryKey("TB_BuildingDetail_House_DL_ID", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class tb_buildingdetail_house_dl : MySqlDbHelperDB.Record<tb_buildingdetail_house_dl>  
+    {
+		[Column] public int TB_BuildingDetail_House_DL_ID { get; set; }
+		[Column] public int? TB_Person_ID { get; set; }
+		[Column] public string Col_PersonName { get; set; }
+		[Column] public string Col_PersonSex { get; set; }
+		[Column] public string Col_PersonTel { get; set; }
+		[Column] public string Col_PersonTZ { get; set; }
+		[Column] public sbyte? Col_IsDelete { get; set; }
+		[Column] public string Col_State { get; set; }
+		[Column] public int? Col_Person_ID_Create { get; set; }
+		[Column] public DateTime? Col_CreateDate { get; set; }
+		[Column] public int? Col_Person_ID_Update { get; set; }
+		[Column] public DateTime? Col_UpdateDate { get; set; }
+		[Column] public int? TB_BuildingDetail_House_ID { get; set; }
+	}
+    
+	[TableName("youshi.tb_buildingdetail_houseprice")]
+	[PrimaryKey("TB_BuildingDetail_HousePrice_ID", AutoIncrement=false)]
+	[ExplicitColumns]
+    public partial class tb_buildingdetail_houseprice : MySqlDbHelperDB.Record<tb_buildingdetail_houseprice>  
+    {
+		[Column] public int TB_BuildingDetail_HousePrice_ID { get; set; }
+		[Column] public int? TB_BuildingDetail_House_ID { get; set; }
+		[Column] public decimal? Col_Price { get; set; }
+		[Column] public DateTime? Col_CreateDate { get; set; }
+		[Column] public sbyte? Col_IsStart { get; set; }
 	}
     
 	[TableName("youshi.tb_user")]
-	[PrimaryKey("Id")]
+	[PrimaryKey("Col_Id")]
 	[ExplicitColumns]
     public partial class tb_user : MySqlDbHelperDB.Record<tb_user>  
     {
-		[Column] public int Id { get; set; }
-		[Column] public string username { get; set; }
-		[Column] public string password { get; set; }
-	}
-    
-	[TableName("youshi.tbhotarea")]
-	[PrimaryKey("fdid")]
-	[ExplicitColumns]
-    public partial class tbhotarea : MySqlDbHelperDB.Record<tbhotarea>  
-    {
-		[Column] public int fdid { get; set; }
-		[Column] public string fdAreaCode { get; set; }
-		[Column] public string fdName { get; set; }
-		[Column] public double? fdLongitude { get; set; }
-		[Column] public double? fdLatitude { get; set; }
-		[Column] public float? fdRadius { get; set; }
-		[Column] public string fdNote { get; set; }
-		[Column] public DateTime? fdUpdateTime { get; set; }
+		[Column] public int Col_Id { get; set; }
+		[Column] public string Col_username { get; set; }
+		[Column] public string Col_password { get; set; }
+		[Column] public string Col_address { get; set; }
+		[Column] public string Col_email { get; set; }
+		[Column] public string Col_telephone { get; set; }
+		[Column] public string Col_remark { get; set; }
 	}
 }
