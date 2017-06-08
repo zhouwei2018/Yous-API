@@ -167,15 +167,27 @@ namespace YousAPI.Controllers
         /// </summary>
         /// <param name="userId">用户ID</param>
         /// <returns></returns>
-        [Route("UserCenter/90000102")]
+        [Route("PublicServer/90000102")]
         [HttpPost]
-        public ResponseJson GetMobileCode(dynamic obj)
+        public ResponseJson GetMobileCode(RequestJson parameters)
         {
 
-            string Mobile = obj.parameters.Mobile;
-            string VerifiationCCodeType = obj.parameters.VerifiationCCodeType;
-            string ImageNo = obj.parameters.ImageNo;
-            string InputCode = obj.parameters.InputCode;
+            /*---//发送注册验证码
+             * VerifiationCCodeType：发送短信类型 1001=注册；
+             {
+                "parameters": {
+                    "Col_telephone": "13426242626",
+					"VerifiationCCodeType": "1001"
+                    },
+					"foreEndType": 2,
+					"code": "90000102"
+
+                }
+            ---*/
+            JObject o = JObject.Parse(parameters.Parameters);
+            string Mobile = o["Col_telephone"].ToString(); ;
+            string VerifiationCCodeType = o["VerifiationCCodeType"].ToString(); ;
+            string ImageNo = o["ImageNo"]!=null? o["ImageNo"].ToString():string.Empty ;
 
 
             ResponseJson result = new ResponseJson { success = true, message = "" };
@@ -186,7 +198,7 @@ namespace YousAPI.Controllers
 
             try
             {
-                using (var redisClient = RedisHelper.GetClient())
+                using (var redisClient = RedisHelper.GetRedisClient())
                 {
                     IRedisTypedClient<UserPhoneCode> irClient = redisClient.As<UserPhoneCode>();
 
@@ -209,8 +221,8 @@ namespace YousAPI.Controllers
                     };
                     irClient.Store(pcode);
 
-                    //发送短信
-                    SmsHelp.SendMassage(pcode.phone, pcode.code);
+                    //发送短信 测试阶段不发送短信
+                    //SmsHelp.SendMassage(pcode.phone, pcode.code);
                 }
             }
             catch (Exception ex) { }

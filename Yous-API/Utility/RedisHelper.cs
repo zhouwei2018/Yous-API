@@ -22,10 +22,20 @@ namespace YousAPI.Utility
         /// </summary>
         static RedisHelper()
         {
-            CreateManager();
+            //CreateManager();
         }
 
 
+        public static IRedisClient GetRedisClient()
+        {
+            string redisconn = System.Configuration.ConfigurationManager.AppSettings["redisconn"];
+            IRedisClient Rclient = new RedisClient(redisconn.Split('|')[0], int.Parse(redisconn.Split('|')[1]));
+            if (redisconn.Split('|').Count() > 2)
+            {
+                Rclient.Password = redisconn.Split('|')[2];
+            }
+            return Rclient;
+        }
         /// <summary>
         /// 创建链接池管理对象
         /// </summary>

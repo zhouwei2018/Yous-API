@@ -260,16 +260,21 @@ namespace YousAPI.Models
 	}
     
 	[TableName("youshi.tb_user")]
-	[PrimaryKey("Col_Id")]
+	[PrimaryKey("id")]
 	[ExplicitColumns]
     public partial class tb_user : MySqlDbHelperDB.Record<tb_user>  
     {
-		[Column] public int Col_Id { get; set; }
+		[Column] public int id { get; set; }
 		[Column] public string Col_username { get; set; }
+		[Column] public string Col_displayname { get; set; }
 		[Column] public string Col_password { get; set; }
 		[Column] public string Col_address { get; set; }
 		[Column] public string Col_email { get; set; }
 		[Column] public string Col_telephone { get; set; }
+		[Column] public string Col_desc { get; set; }
 		[Column] public string Col_remark { get; set; }
+		[Column] public int? Col_isenable { get; set; }
+		[Column] public DateTime create_time { get; set; }
+		[Column] public DateTime update_time { get; set; }
 	}
 }

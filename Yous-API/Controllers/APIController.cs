@@ -23,12 +23,12 @@ namespace YousAPI.Controllers
         [HttpPost]
         public IHttpActionResult GetServiceApiResult(dynamic inputParame)
         {
-            Dictionary<string, string> controllerNameKeyValue = new Dictionary<string, string> {   
+            Dictionary<string, string> controllerNameKeyValue = new Dictionary<string, string> {
                 {"100", "http://" + Url.Request.Headers.Host + "/UserCenter"},  //100-用户中心路由
                 {"200", "http://" + Url.Request.Headers.Host + "/Portals"},     //200-网站门户路由
                 {"900", "http://" + Url.Request.Headers.Host + "/PublicServer"},     //200-网站门户路由
             };
-       
+
             string ret = String.Empty;
             RequestJson parame = GetInParametersCondition(inputParame);
 
@@ -50,16 +50,23 @@ namespace YousAPI.Controllers
                 writer.Close();
                 writer.Dispose();
             }
-        
+
             #endregion
 
             #region 返回Response
-            using (WebResponse response = proxyRequest.GetResponse())
+            try
             {
-                StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding("utf-8"));
-                ret = reader.ReadToEnd();
-                reader.Close();
-                reader.Dispose();
+                using (WebResponse response = proxyRequest.GetResponse())
+                {
+                    StreamReader reader = new StreamReader(response.GetResponseStream(), Encoding.GetEncoding("utf-8"));
+                    ret = reader.ReadToEnd();
+                    reader.Close();
+                    reader.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+
             }
             #endregion
 
