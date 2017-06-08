@@ -159,7 +159,6 @@ namespace YousAPI.Controllers
             ResponseJson responseJson = new ResponseJson { success = true, data = result, message = "" };
             return responseJson;
         }
-        #endregion
 
 
         /// <summary>
@@ -173,11 +172,20 @@ namespace YousAPI.Controllers
         {
 
             /*---//发送注册验证码
-             * VerifiationCCodeType：发送短信类型 1001=注册；
+             * VerifiationCCodeType：发送短信类型 1001=注册；2001=创建用户查询商圈表单；
              {
                 "parameters": {
                     "Col_telephone": "13426242626",
 					"VerifiationCCodeType": "1001"
+                    },
+					"foreEndType": 2,
+					"code": "90000102"
+
+                }
+             {
+                "parameters": {
+                    "Col_telephone": "13426242626",
+					"VerifiationCCodeType": "2001"
                     },
 					"foreEndType": 2,
 					"code": "90000102"
@@ -221,13 +229,16 @@ namespace YousAPI.Controllers
                     };
                     irClient.Store(pcode);
 
-                    //发送短信 测试阶段不发送短信
+                    //test 发送短信 测试阶段不发送短信
                     //SmsHelp.SendMassage(pcode.phone, pcode.code);
                 }
             }
             catch (Exception ex) { }
             return result;
         }
+
+
+        #endregion
 
     }
 

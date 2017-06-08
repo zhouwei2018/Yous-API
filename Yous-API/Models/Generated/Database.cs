@@ -277,4 +277,22 @@ namespace YousAPI.Models
 		[Column] public DateTime create_time { get; set; }
 		[Column] public DateTime update_time { get; set; }
 	}
+    
+	[TableName("youshi.tb_user_request_building")]
+	[PrimaryKey("id")]
+	[ExplicitColumns]
+    public partial class tb_user_request_building : MySqlDbHelperDB.Record<tb_user_request_building>  
+    {
+		[Column] public int id { get; set; }
+		[Column] public string Col_orderid { get; set; }
+		[Column] public string Col_telephone { get; set; }
+		[Column] public string Col_city { get; set; }
+		[Column] public string Col_business { get; set; }
+		[Column] public decimal Col_measure { get; set; }
+		[Column] public decimal Col_rent { get; set; }
+		[Column] public string Col_desc { get; set; }
+		[Column] public int? Col_isenable { get; set; }
+		[Column] public DateTime create_time { get; set; }
+		[Column] public DateTime update_time { get; set; }
+	}
 }
