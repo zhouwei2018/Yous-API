@@ -230,7 +230,7 @@ namespace YousAPI.Controllers
                     irClient.Store(pcode);
 
                     //test 发送短信 测试阶段不发送短信
-                    //SmsHelp.SendMassage(pcode.phone, pcode.code);
+                    SmsHelp.SendMassage(pcode.phone, pcode.code);
                 }
             }
             catch (Exception ex) { }
