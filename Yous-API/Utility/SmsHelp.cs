@@ -21,7 +21,9 @@ namespace YousAPI.Utility
         }
         public static bool SendMassage(string RecNum, string code)
         {
-            return ALiYunSendMassage(RecNum, code);
+
+            return DaYuSendMassageNew(RecNum, code);
+            //return ALiYunSendMassage(RecNum, code);
         }
         public static bool SendOrderOverMassage(string recNum, string code)
         {
@@ -146,6 +148,43 @@ namespace YousAPI.Utility
             {
                 //e.printStackTrace();
             }
+
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// 发送短信
+        /// </summary>
+        /// <param name="RecNum">手机号</param>
+        /// <param name="code">验证码</param>
+        /// <returns></returns>
+        public static bool DaYuSendMassageNew(string RecNum, string code)
+        {
+
+            string url = "http://gw.api.taobao.com/router/rest?";
+
+            string appkey = "23861744";
+            string appsecret = "22ed367960e45b7d05668977dbb7b433";
+            string SmsTemplateCode = "SMS_68080067";
+
+            //if (!string.IsNullOrEmpty(System.Configuration.ConfigurationManager.AppSettings["SendMassage"]))
+            //{
+            //    appkey = System.Configuration.ConfigurationManager.AppSettings["SendMassage"].Split(',')[0];
+            //    appsecret = System.Configuration.ConfigurationManager.AppSettings["SendMassage"].Split(',')[1];
+            //    SmsTemplateCode = System.Configuration.ConfigurationManager.AppSettings["SendMassage"].Split(',')[2];
+            //}
+            ITopClient client = new DefaultTopClient(url, appkey, appsecret);
+            AlibabaAliqinFcSmsNumSendRequest req = new AlibabaAliqinFcSmsNumSendRequest();
+            req.Extend = "";
+            req.SmsType = "normal";
+            req.SmsFreeSignName = "幼狮官网";
+            req.SmsParam = "{code:'" + code + "'}";
+            req.RecNum = RecNum.Trim();
+            req.SmsTemplateCode = SmsTemplateCode;
+            AlibabaAliqinFcSmsNumSendResponse rsp = client.Execute(req);
+            Console.WriteLine(rsp.Body);
 
 
             return true;
@@ -280,6 +319,6 @@ namespace YousAPI.Utility
             s = Convert.ToString(rm.Next(1000, 9999));
             return s;
         }
-        
+
     }
 }
